@@ -17,7 +17,10 @@ RUN \
   && apk --no-cache update \
   && apk --no-cache upgrade \
   && apk add --no-cache chromium \
-  && rm -rf /var/cache/apk/* /tmp/*
+  && rm -rf /var/lib/apt/lists/* \
+    /var/cache/apk/* \
+    /usr/share/man \
+    /tmp/*
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \
     CHROME_PATH=/usr/lib/chromium/
