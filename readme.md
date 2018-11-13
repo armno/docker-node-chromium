@@ -9,7 +9,7 @@ Use `node-chromium` for local development.
 In `Dockerfile`:
 
 ```dockerfile
-FROM armno/node-chromium:10.13.0-alpine
+FROM armno/node-chromium:10.13.0
 
 # set the working directory
 RUN mkdir -p /usr/src/app
@@ -49,7 +49,7 @@ services:
 In `.gitlab-ci.yml`
 
 ```yml
-image: armno/node-chromium:10.13.0-alpine
+image: armno/node-chromium:10.13.0
 
 unit_test:
   stage: test
