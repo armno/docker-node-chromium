@@ -1,29 +1,48 @@
 # node-chromium
 
-WIP: A Docker image built from `node-alpine` with `chromium` installed. It is made to use with Angular projects for local development and continuous integration with GitLab CI.
+A Docker image built from `node` and `node-alpine` with `chromium` installed.
+
+It is made to use with Angular projects for local development and continuous integration with GitLab CI.
+
+## Tags
+
+- `latest`, `11.6.0-alpine` - an alpine image with Chromium (68) installed.
+- `11.6.0` - a standard node image with the latest Google Chrome (71) installed.
+
+**TL;DR**: If you are using CodecepJS with Puppeteer driver, use `11.6.0`. Otherwise, use the alpine version.
+
+The alpine image works with local dev server (`$ ng serve`), unit testing with karma (`$ ng test`)
+on both regular and headless Chrome.
+
+The standard node image (non-alpine version) is created so it can run [CodeceptJS](https://codecept.io/) E2E tests
+with [Puppeteer](https://codecept.io/puppeteer) driver.
+The issue was that the alpine image is currently stuck with Chromium 68 and Puppeteer failed to launch Chromium
+on my E2E tests.
+
+---
 
 ## Development
 
-Use `node-chromium` for local development. 
+Use `node-chromium` for local development.
 
 In `Dockerfile`:
 
 ```dockerfile
-FROM armno/node-chromium:10.13.0
+FROM armno/node-chromium:11.6.0
 
 # set the working directory
-RUN mkdir -p /usr/src/app
-WORKDIR /usr/src/app
+RUN mkdir -p /app
+WORKDIR /app
 
 # add `node_modules` to PATH
-ENV PATH /usr/src/app/node_modules/.bin:$PATH
+ENV PATH /app/node_modules/.bin:$PATH
 
 # install and cache dependecies
-COPY package*.json /usr/src/app/
+COPY package*.json /app/
 RUN npm install
 
 # add app
-COPY . /usr/src/app
+COPY . /app
 ```
 
 and `docker-compose.yml`
@@ -37,8 +56,8 @@ services:
     build:
       context: .
     volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
+      - '.:/app'
+      - '/app/node_modules'
     command: npm start
     ports:
       - '4200:4200'
@@ -49,7 +68,7 @@ services:
 In `.gitlab-ci.yml`
 
 ```yml
-image: armno/node-chromium:10.13.0
+image: armno/node-chromium:11.6.0
 
 unit_test:
   stage: test
@@ -57,3 +76,7 @@ unit_test:
     - npm install
   script: npm run test:ci
 ```
+
+## License
+
+[Public Domain](LICENSE)
