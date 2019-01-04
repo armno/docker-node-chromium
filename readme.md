@@ -6,8 +6,8 @@ It is made to use with Angular projects for local development and continuous int
 
 ## Tags
 
-- `latest`, `11.6.0-alpine` - an alpine image with Chromium (68) installed.
-- `11.6.0` - a standard node image with the latest Google Chrome (71) installed.
+- `latest`, `11.6.0-alpine` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/master/Dockerfile)) - an alpine image with Chromium (68) installed.
+- `11.6.0` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node/Dockerfile)) - a standard node image with the latest Google Chrome (71) installed.
 
 **TL;DR**: If you are using CodecepJS with Puppeteer driver, use `11.6.0`. Otherwise, use the alpine version.
 
