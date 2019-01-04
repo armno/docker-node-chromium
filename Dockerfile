@@ -8,7 +8,7 @@
 #   apt-get install -y google-chrome-stable && \
 #   rm -rf /var/lib/apt/lists/*
 
-FROM node:10.13.0-alpine
+FROM node:11.6.0-alpine
 
 RUN \
   echo "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
@@ -18,9 +18,9 @@ RUN \
   && apk --no-cache upgrade \
   && apk add --no-cache chromium \
   && rm -rf /var/lib/apt/lists/* \
-    /var/cache/apk/* \
-    /usr/share/man \
-    /tmp/*
+  /var/cache/apk/* \
+  /usr/share/man \
+  /tmp/*
 
 ENV CHROME_BIN=/usr/bin/chromium-browser \
-    CHROME_PATH=/usr/lib/chromium/
+  CHROME_PATH=/usr/lib/chromium/
