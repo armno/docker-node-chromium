@@ -1,4 +1,4 @@
-FROM node:11.6.0-alpine
+FROM node:10.15.0-alpine
 
 RUN apk update && apk upgrade \
   echo @edge "http://dl-cdn.alpinelinux.org/alpine/edge/community" >> /etc/apk/repositories \
