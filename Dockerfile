@@ -6,6 +6,7 @@ RUN apk update && apk upgrade \
   && echo @edge "http://dl-cdn.alpinelinux.org/alpine/edge/testing" >> /etc/apk/repositories \
   && apk --no-cache update \
   && apk --no-cache upgrade \
+  && apk add --no-cache --virtual .gyp python make g++ \
   && apk add --no-cache chromium@edge \
   && rm -rf /var/lib/apt/lists/* \
   /var/cache/apk/* \

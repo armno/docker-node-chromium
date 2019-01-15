@@ -4,6 +4,8 @@ A Docker image built from `node` and `node-alpine` with `chromium` installed.
 
 It is made to use with Angular projects for local development and continuous integration with GitLab CI.
 
+It also comes with `python` installed, in case it is needed to rebuild `node-sass` dependency's binary from the source code.
+
 ## Tags
 
 - `latest`, `11.6.0-alpine` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/master/Dockerfile)) - an alpine image with Chromium (68) installed.
