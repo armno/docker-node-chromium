@@ -8,9 +8,15 @@ It also comes with `python` installed, in case it is needed to rebuild `node-sas
 
 ## Tags
 
+### node-alpine:
+
 - `latest`, `11.6.0-alpine` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/master/Dockerfile)) - an alpine image with Chromium (68) installed.
-- `11.6.0` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node/Dockerfile)) - a standard node image with the latest Google Chrome (71) installed.
-- `10.15.0-alpine` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node-10/Dockerfile)) - a version with node 10.
+- `10.15.0-alpine` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node-10-alpine/Dockerfile)) - a version with node 10.
+
+### node
+
+- `11.6.0` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node/Dockerfile)) - a standard node image with the latest Google Chrome (71) installed.. i think 🤔
+- `10.16.0` ([Dockerfile](https://github.com/armno/docker-node-chromium/blob/node-10/Dockerfile)) - same configurations but for node 10.x
 
 **TL;DR**: If you are using CodecepJS with Puppeteer driver, use `11.6.0`. Otherwise, use the alpine version.
 
@@ -83,3 +89,15 @@ unit_test:
 ## License
 
 [Public Domain](LICENSE)
+
+-----
+
+### Personal notes
+
+(I have to note this to my future self on how to do these things again).
+
+To make a new image/tag on dockerhub:
+
+1. create/update `Dockerfile` with the desired `<NODE_VERSION>`
+2. build the image locally `$ docker build --tag armno/node-chromium:<NODE_VERSION> .`
+3. push to dockerhub `$ docker push armno/node-chromium:<NODE_VERSION>`
