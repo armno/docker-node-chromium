@@ -98,6 +98,7 @@ unit_test:
 
 To make a new image/tag on dockerhub:
 
-1. create/update `Dockerfile` with the desired `<NODE_VERSION>`
+0. create a new branch if needed.
+1. create/update `Dockerfile` with the desired `<NODE_VERSION>`.
 2. build the image locally `$ docker build --tag armno/node-chromium:<NODE_VERSION> .`
 3. push to dockerhub `$ docker push armno/node-chromium:<NODE_VERSION>`
